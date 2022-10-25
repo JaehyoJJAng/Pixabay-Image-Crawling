@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "authority": "cdn.pixabay.com",
+    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Cookie": "__cf_bm=k.BKBHLqSsXXzzsns7Q4IdsSfz2VZ7vlBO7zCdBVS2M-1665217892-0-ASytvUoUWMLPSUZhgzwVGWKHFI9w6kntan8RO4/x+FeU9+i5Uq/VwHR5iwU3FjSK1LOTesCShwclWQbXpgF/XEE=; _ga=GA1.2.369413108.1665217894; _gid=GA1.2.673941057.1665217894;",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.104 Whale/3.13.131.36 Safari/537.36"
+  }
+}
