@@ -17,7 +17,9 @@ $ python3 main.py
 </pre>
 
 </hr>
-<h3>
-You can edit 'self.query' in 'main.py' to extract images for desired keywords.
+<p>
+<strong>
+You can edit 'self.query' in 'main.py' to extract images for desired keywords</br>
 You can optionally change the 'page' value in 'main.py'
-</h3>
+</strong>
+</p>
