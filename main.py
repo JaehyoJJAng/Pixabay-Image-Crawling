@@ -12,6 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from typing import Dict,List,Union
 
 class ChromeDriver:
     @staticmethod
@@ -38,21 +39,21 @@ class ChromeDriver:
         return browser
 
 class Pixabay:
-    def __init__(self):
-        self.__headers = headers.get_headers(key='headers')
+    def __init__(self)-> None:
+        self.__headers : Dict[str,str] = headers.get_headers(key='headers')
 
-        self.query = '우주'
+        self.query : str = '우주'
 
-        self.URLS = [f'https://pixabay.com/ko/photos/search/{rep.quote_plus(self.query)}/?manual_search={1}&pagi={page}' for page in range(1,5 + 1)]
+        self.URLS : List[str] = [f'https://pixabay.com/ko/photos/search/{rep.quote_plus(self.query)}/?manual_search={1}&pagi={page}' for page in range(1,5 + 1)]
 
         self.browser = ChromeDriver().set_driver()
 
-        self.count = 1
+        self.count : int = 1
 
-    def main(self):
+    def main(self)-> None:
         [self.fetch(url=url) for url in self.URLS]
 
-    def fetch(self,url:str):
+    def fetch(self,url:str)-> None:
         self.browser.get(url)
         self.browser.implicitly_wait(20)
 
@@ -64,10 +65,10 @@ class Pixabay:
 
         soup = bs(self.browser.page_source,'html.parser')
 
-        images_length = len(soup.select('div.row-masonry.search-results div.row-masonry-cell'))
+        images_length : int = len(soup.select('div.row-masonry.search-results div.row-masonry-cell'))
 
         for idx in range(images_length):
-            images = soup.select('div.row-masonry.search-results div.row-masonry-cell')
+            images : list = soup.select('div.row-masonry.search-results div.row-masonry-cell')
 
             image = images[idx].select_one('div.item img.photo-result-image')
             if image != None:
@@ -79,16 +80,16 @@ class Pixabay:
         # 서버 과부하 방지용 대기시간 할당
         time.sleep(1.5)
 
-    def image_download(self,img_url: str):
+    def image_download(self,img_url: str)-> None:
         """ 이미지 다운로드 메서드 """
 
         # 이미지 파일 저장 위치 지정
-        img_save_path = os.path.abspath(f"{self.query}")
+        img_save_path : str = os.path.abspath(f"{self.query}")
         if not os.path.exists(img_save_path):
             os.mkdir(img_save_path)
 
         # 이미지 파일명 지정
-        img_filename = os.path.join(img_save_path, f'localImage-{self.count}.jpg')
+        img_filename : str = os.path.join(img_save_path, f'localImage-{self.count}.jpg')
 
         try :
             # 이미지 다운로드
@@ -101,8 +102,8 @@ class Pixabay:
             print('이미지 다운로드 실패\n')
             pass
 
-    def scroll_down(self):
-        scroll_count = 0
+    def scroll_down(self)-> None:
+        scroll_count : int = 0
         while True:
             if scroll_count == 8:
                 break
